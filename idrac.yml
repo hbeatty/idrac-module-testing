@@ -11,19 +11,15 @@
       - idrac-alerts
       - idrac-firmware
       - idrac-storage
-      - idrac-iso
+      - idrac-os-install
 
   - debug: var={{share_type}}
-
-  #- name: Copy XML file to /var/samba
-  #  copy: src=files/idrac_xml/ dest=/var/samba/ directory_mode=yes mode=0644
-  #        #owner=ansible group=ansible mode=644
 
 - hosts: localhost
   sudo: yes
   
   roles:
-    - idrac/local
+    - { role: idrac/local, tags: "idrac-local" }
 
 - hosts: idracs
   gather_facts: False
@@ -33,5 +29,5 @@
     - { role: idrac/facts, tags: [ "idrac-facts", "idrac-alerts", "idrac-firmware", "idrac-storage", "idrac-os-install" ] }
     - { role: idrac/alerts, tags: "idrac-alerts" }
     - { role: idrac/firmware, tags: "idrac-firmware" }
-    - { role: idrac/storage, tags: "idrac-storage" }
-    - { role: idrac/os-install, tags: "idrac-os-install" }
+    #- { role: idrac/storage, tags: "idrac-storage" }
+    #- { role: idrac/os-install, tags: "idrac-os-install" }
