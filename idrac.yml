@@ -21,7 +21,9 @@
   roles:
     - { role: idrac/local, tags: "idrac-local" }
 
-- hosts: idracs
+- hosts:
+    - webservers
+    - dbservers
   gather_facts: False
   sudo: yes
 

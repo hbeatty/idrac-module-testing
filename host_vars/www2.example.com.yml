@@ -1,0 +1,5 @@
+---
+# file: host_vars/www2.example.com.yml
+
+lom_hostname: 172.30.204.25
+
