@@ -1,0 +1,6 @@
+[submodule "roles/idrac"]
+	path = roles/idrac
+	url = https://github.com/hbeatty/idrac-roles
+[submodule "library/idrac"]
+	path = library/idrac
+	url = https://github.com/hbeatty/iDRAC-Ansible-module
