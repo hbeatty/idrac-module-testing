@@ -1,6 +1,6 @@
 [submodule "library/idrac"]
 	path = library/idrac
-	url = git@anp-git.ni.coxlab.net:CCI-CDN/iDRAC-Ansible-module.git
+	url = git@github.com:hbeatty/iDRAC-Ansible-module.git
 [submodule "roles/idrac"]
 	path = roles/idrac
-	url = git@anp-git.ni.coxlab.net:CCI-CDN/idrac-roles.git
+	url = git@github.com:hbeatty/idrac-roles.git
