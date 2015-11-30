@@ -1,0 +1,5 @@
+---
+# file: host_vars/mid01.example.com.yml
+
+lom_hostname: 10.22.252.17
+

@@ -3,7 +3,7 @@
 
 lom_user: root
 #lom_pass: PhuVeCraq4
-lom_pass: calvin
+lom_pass: cdadmin99
 drac_default_pass: calvin
 
 share_user: idrac

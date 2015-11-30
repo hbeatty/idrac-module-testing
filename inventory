@@ -7,14 +7,34 @@ www2.example.com
 db1.example.com
 db2.example.com
 
+[edges]
+edge01.example.com
+edge02.example.com
+edge05.example.com
+edge06.example.com
+
+[mids]
+mid01.example.com
+mid02.example.com
+mid03.example.com
+mid04.example.com
+
 [idracs]
 # 720
-172.30.204.49
+#172.30.204.49
 # 730xd
-172.30.204.25
-172.30.204.34
+#172.30.204.25
+#172.30.204.34
 # 630
-172.30.204.43
+#172.30.204.43
+10.22.252.15
+10.22.252.17
+10.22.252.19
+10.22.252.21
+10.22.252.130
+10.22.252.131
+10.22.252.132
+10.22.252.133
 
 [cms]
 172.30.204.37

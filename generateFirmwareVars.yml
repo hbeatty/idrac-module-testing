@@ -1,6 +1,6 @@
 ---
 
-- hosts: www1.example.com
+- hosts: edge01.example.com
   gather_facts: False
   sudo: yes
 
@@ -13,5 +13,6 @@
       password: "{{lom_pass}}"
       hostname: "{{lom_hostname}}"
       command: "GenerateFirmwareVars"
+      firmware_file: group_vars/all/firmware.yml
       debug: "True"
 
