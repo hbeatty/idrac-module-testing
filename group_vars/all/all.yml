@@ -2,7 +2,8 @@
 # file: group_vars/all.yml
 
 lom_user: root
-lom_pass: PhuVeCraq4
+#lom_pass: PhuVeCraq4
+lom_pass: calvin
 drac_default_pass: calvin
 
 share_user: idrac

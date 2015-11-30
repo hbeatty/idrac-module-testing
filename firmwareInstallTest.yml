@@ -1,0 +1,33 @@
+---
+# file: firmwareInstallTest.yml
+
+- hosts:
+    - webservers
+    - dbservers
+  gather_facts: False
+  sudo: yes
+
+  tasks:
+
+
+    - name: "Get System Inventory"
+      local_action:
+        module: idrac
+        username: "{{lom_user}}"
+        password: "{{lom_pass}}"
+        hostname: "{{lom_hostname}}"
+        name: "GetSystemInventory"
+
+    - debug: var=firmware[SystemGeneration]
+
+    - debug: var=firmware
+
+    - name: "Install Firmware"
+      local_action:
+        module: idrac
+        username: "{{lom_user}}"
+        password: "{{lom_pass}}"
+        hostname: "{{lom_hostname}}"
+        command: "InstallFirmware"
+        debug: "True"
+        firmware: "{{ firmware[SystemGeneration] }}"

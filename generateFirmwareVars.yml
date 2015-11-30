@@ -1,0 +1,17 @@
+---
+
+- hosts: www1.example.com
+  gather_facts: False
+  sudo: yes
+
+  tasks:
+
+  - name: Generate firmware.yml
+    local_action:
+      module: idrac
+      username: "{{lom_user}}"
+      password: "{{lom_pass}}"
+      hostname: "{{lom_hostname}}"
+      command: "GenerateFirmwareVars"
+      debug: "True"
+
