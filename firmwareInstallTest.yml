@@ -4,6 +4,8 @@
 - hosts:
     - webservers
     - dbservers
+    - edges
+    - mids
   gather_facts: False
   sudo: yes
 
@@ -18,9 +20,29 @@
         hostname: "{{lom_hostname}}"
         name: "GetSystemInventory"
 
-    - debug: var=firmware[SystemGeneration]
+    #- debug: var=firmware[SystemGeneration]
 
-    - debug: var=firmware
+    #- debug: var=firmware
+
+    #- name: "Install iDRAC Firmware"
+    #  local_action:
+    #    module: idrac
+    #    username: "{{lom_user}}"
+    #    password: "{{lom_pass}}"
+    #    hostname: "{{lom_hostname}}"
+    #    command: "InstallIdracFirmware"
+    #    debug: "True"
+    #    firmware: "{{ firmware[SystemGeneration].idrac }}"
+    #
+    #- name: "Install BIOS"
+    #  local_action:
+    #    module: idrac
+    #    username: "{{lom_user}}"
+    #    password: "{{lom_pass}}"
+    #    hostname: "{{lom_hostname}}"
+    #    command: "InstallBIOS"
+    #    debug: "True"
+    #    firmware: "{{ firmware[SystemGeneration].bios }}"
 
     - name: "Install Firmware"
       local_action:
@@ -31,3 +53,6 @@
         command: "InstallFirmware"
         debug: "True"
         firmware: "{{ firmware[SystemGeneration] }}"
+      register: install_res
+
+    - debug: var=install_res

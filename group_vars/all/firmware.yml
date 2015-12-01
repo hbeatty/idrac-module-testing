@@ -32,84 +32,91 @@
 #   component_id:
 #     - optional
 #     - If specified this will be used to match the 'ComponentID' from EnumerateSoftwareIdentity.
-#   indentity_info_value:
+#   identity_info_value:
 #     - optional
 #     - If specified this will be used to match the 'IdentityInfoValue' from EnumerateSoftwareIdentity.
 #   search:
 #     - optional
-#     - Uses a regular expression search of the 'ElementName' from EnumerateSoftwareIdentity to find a match. This is a last resort and I recommend you use either the component_id or indentity_info_value.
+#     - Uses a regular expression search of the 'ElementName' from EnumerateSoftwareIdentity to find a match. This is a last resort and I recommend you use either the component_id or identity_info_value.
 #
 #  Matching order:
 #    1. key. idrac, bios, diagnostics, os_collector, and driver_pack should only match one.
 #    2. component_id. if specified. Best used for disks, power supplies, RAID backplane, RAID enclosure
-#    3. indentity_info_value. if specified. Best used for NICs, RAID controller
+#    3. identity_info_value. if specified. Best used for NICs, RAID controller
 #    4. search. if specified. Searches the 'ElementName' from EnumerateSoftwareIdentity. Last resort.
 #
 firmware:
   12G_Monolithic:
     driver_pack:
-      url: Fill in this value by going to support.dell.com
-      target_version: Fill in this value from support.dell.com. Current version is 14.11.02
-      element_name: Dell OS Driver Pack, Version 14.11.02, A00
+      url: "http://downloads.dell.com/FOLDER03181143M/1/Drivers-for-OS-Deployment_Application_3VP5C_WN64_15.07.07_A00.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/Drivers-for-OS-Deployment_Application_3VP5C_WN64_15.07.07_A00.EXE;mountpoint={{share_name}}"
+      target_version: "15.07.07"
+      element_name: "Dell OS Driver Pack"
     idrac:
-      url: Fill in this value by going to support.dell.com
-      target_version: Fill in this value from support.dell.com. Current version is 2.20.20.20
-      element_name: Integrated Dell Remote Access Controller
+      url: "http://downloads.dell.com/FOLDER03408335M/1/iDRAC-with-Lifecycle-Controller_Firmware_VV01T_WN64_2.21.21.21_A00.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/iDRAC-with-Lifecycle-Controller_Firmware_VV01T_WN64_2.21.21.21_A00.EXE;mountpoint={{share_name}}"
+      target_version: "2.21.21.21"
+      element_name: "Integrated Dell Remote Access Controller"
     nic.1:
-      url: Fill in this value by going to support.dell.com
-      target_version: Fill in this value from support.dell.com. Current version is 7.10.18
-      element_name: Broadcom Gigabit Ethernet BCM5720 - F8:BC:12:51:9F:67
-      indentity_info_value: DCIM:firmware:14E4:165F:1028:1F5B
+      url: "http://downloads.dell.com/FOLDER02922813M/1/Network_Firmware_PX6V4_WN64_7.12.17.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/Network_Firmware_PX6V4_WN64_7.12.17.EXE;mountpoint={{share_name}}"
+      target_version: "7.12.17"
+      element_name: "Broadcom Gigabit Ethernet BCM5720"
+      identity_info_value: "DCIM:firmware:14E4:165F:1028:1F5B"
     nic.2:
-      url: Fill in this value by going to support.dell.com
-      target_version: Fill in this value from support.dell.com. Current version is 15.0.28
-      element_name: Intel(R) Ethernet 10G 2P X520 Adapter - A0:36:9F:4A:84:D8
-      indentity_info_value: DCIM:firmware:8086:154D:8086:7B11
+      url: "http://downloads.dell.com/FOLDER02861870M/2/Network_Firmware_6FD9P_WN64_16.5.20_A00.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/Network_Firmware_6FD9P_WN64_16.5.20_A00.EXE;mountpoint={{share_name}}"
+      target_version: "16.5.20"
+      element_name: "Intel(R) Ethernet 10G 2P X520 Adapter"
+      identity_info_value: "DCIM:firmware:8086:154D:8086:7B11"
     raid_backplane.1:
-      url: Fill in this value by going to support.dell.com
-      component_id: 26018
-      target_version: Fill in this value from support.dell.com. Current version is 1.00
-      element_name: Backplane 1
+      url: "http://downloads.dell.com/FOLDER00232516M/9/Firmware_681JN_WN32_1.00_A00.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/Firmware_681JN_WN32_1.00_A00.EXE;mountpoint={{share_name}}"
+      component_id: "26018"
+      target_version: "1.00"
+      element_name: "Backplane 1"
     enclosure.1:
-      url: Fill in this value by going to support.dell.com
-      component_id: 15400735
-      target_version: Fill in this value from support.dell.com. Current version is 1.07
-      element_name: BP12G+EXP 0:1
+      url: "http://downloads.dell.com/FOLDER00307374M/6/ESM_Firmware_3GPH3_WN32_1.07_A00-00.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/ESM_Firmware_3GPH3_WN32_1.07_A00-00.EXE;mountpoint={{share_name}}"
+      component_id: "15400735"
+      target_version: "1.07"
+      element_name: "BP12G+EXP 0:1"
     disk.2:
-      url: Fill in this value by going to support.dell.com
-      component_id: 25851
-      target_version: Fill in this value from support.dell.com. Current version is YS0C
-      element_name: Disk 24 in Backplane 1 of Integrated RAID Controller 1
+      url: "http://downloads.dell.com/FOLDER02347714M/2/SAS-Drive_Firmware_57G3N_WN64_YS0C_A08.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/SAS-Drive_Firmware_57G3N_WN64_YS0C_A08.EXE;mountpoint={{share_name}}"
+      component_id: "25851"
+      target_version: "YS0C"
+      element_name: "Disk 24 in Backplane 1 of Integrated RAID Controller 1. Model ST9146853SS Manufacturer SEAGATE"
     disk.1:
-      url: Fill in this value by going to support.dell.com
-      component_id: 30667
-      target_version: Fill in this value from support.dell.com. Current version is LS0A
-      element_name: Disk 22 in Backplane 1 of Integrated RAID Controller 1
+      url: "http://downloads.dell.com/FOLDER03122098M/1/SAS-Drive_Firmware_68NGY_WN64_LS0B_A00.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/SAS-Drive_Firmware_68NGY_WN64_LS0B_A00.EXE;mountpoint={{share_name}}"
+      component_id: "30667"
+      target_version: "LS0B"
+      element_name: "Disk 22 in Backplane 1 of Integrated RAID Controller 1. Model ST900MM0006 Manufacturer SEAGATE"
     bios:
-      url: http://downloads.dell.com/FOLDER02797465M/1/BIOS_MKCTM_WN64_2.5.2.EXE
+      url: "http://downloads.dell.com/FOLDER02797465M/1/BIOS_MKCTM_WN64_2.5.2.EXE"
       share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/BIOS_MKCTM_WN64_2.5.2.EXE;mountpoint={{share_name}}"
-      target_version: 2.5.2
-      element_name: BIOS
+      target_version: "2.5.2"
+      element_name: "BIOS"
     os_collector:
-      url: Fill in this value by going to support.dell.com
-      target_version: Fill in this value from support.dell.com. Current version is OSC_1.1
-      element_name: OS COLLECTOR 1.1, OSC_1.1, X10-00
-    unknown.1:
-      url: Fill in this value by going to support.dell.com
-      target_version: Fill in this value from support.dell.com. Current version is 1.0.3
-      element_name: System CPLD
-      indentity_info_value: DCIM:firmware:27763
+      url: "http://downloads.dell.com/FOLDER02775623M/1/Diagnostics_Application_5W2KP_WN64_OSC_1.1_X10-00.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/Diagnostics_Application_5W2KP_WN64_OSC_1.1_X10-00.EXE;mountpoint={{share_name}}"
+      target_version: "OSC_1.1"
+      element_name: "OS COLLECTOR"
     diagnostics:
-      url: Fill in this value by going to support.dell.com
-      target_version: Fill in this value from support.dell.com. Current version is 4247A1
-      element_name: Dell 64 Bit uEFI Diagnostics, version 4247, 4247A1, 4247.2
+      url: "http://downloads.dell.com/FOLDER03035031M/1/Diagnostics_Application_D5TM2_WN64_4247A1_4247.2.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/Diagnostics_Application_D5TM2_WN64_4247A1_4247.2.EXE;mountpoint={{share_name}}"
+      target_version: "4247A1"
+      element_name: "Dell 64 Bit uEFI Diagnostics"
     psu.1:
-      url: Fill in this value by going to support.dell.com
-      component_id: 26513
-      target_version: Fill in this value from support.dell.com. Current version is 07.09.49
-      element_name: Power Supply.Slot.2
+      url: "http://downloads.dell.com/FOLDER01901391M/1/Power_Firmware_62N6X_WN64_07.09.49_A00.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/Power_Firmware_62N6X_WN64_07.09.49_A00.EXE;mountpoint={{share_name}}"
+      component_id: "26513"
+      target_version: "07.09.49"
+      element_name: "Power Supply"
     raid.1:
-      url: Fill in this value by going to support.dell.com
-      target_version: Fill in this value from support.dell.com. Current version is 21.3.2-0005
-      element_name: PERC H710P Mini
-      indentity_info_value: DCIM:firmware:1000:005B:1028:1F34
+      url: "http://downloads.dell.com/FOLDER03129301M/1/SAS-RAID_Firmware_F9M2Y_WN64_21.3.2-0005_A07.EXE"
+      share_uri: "{{share_type}}://{{share_user}}:{{share_pass}}@{{share_ip}}/SAS-RAID_Firmware_F9M2Y_WN64_21.3.2-0005_A07.EXE;mountpoint={{share_name}}"
+      target_version: "21.3.2-0005"
+      element_name: "PERC H710P Mini"
+      identity_info_value: "DCIM:firmware:1000:005B:1028:1F34"
