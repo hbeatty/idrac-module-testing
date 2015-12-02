@@ -1,6 +1,12 @@
 ---
 # file: firmwareInstallTest.yml
 
+- hosts: cms
+  sudo: yes
+
+  roles:
+    - { role: idrac/local, tags: "idrac-local" }
+
 - hosts:
     - webservers
     - dbservers
@@ -9,8 +15,15 @@
   gather_facts: False
   sudo: yes
 
-  tasks:
+  vars_prompt:
+    - name: lom_pass
+      prompt: "What is the lom_pass?"
+      default: calvin
+    - name: share_ip
+      prompt: "What is the share_ip?"
 
+  tasks:
+    - debug: var=share_ip
 
     - name: "Get System Inventory"
       local_action:
@@ -24,25 +37,25 @@
 
     #- debug: var=firmware
 
-    #- name: "Install iDRAC Firmware"
-    #  local_action:
-    #    module: idrac
-    #    username: "{{lom_user}}"
-    #    password: "{{lom_pass}}"
-    #    hostname: "{{lom_hostname}}"
-    #    command: "InstallIdracFirmware"
-    #    debug: "True"
-    #    firmware: "{{ firmware[SystemGeneration].idrac }}"
-    #
-    #- name: "Install BIOS"
-    #  local_action:
-    #    module: idrac
-    #    username: "{{lom_user}}"
-    #    password: "{{lom_pass}}"
-    #    hostname: "{{lom_hostname}}"
-    #    command: "InstallBIOS"
-    #    debug: "True"
-    #    firmware: "{{ firmware[SystemGeneration].bios }}"
+    - name: "Install iDRAC Firmware"
+      local_action:
+        module: idrac
+        username: "{{lom_user}}"
+        password: "{{lom_pass}}"
+        hostname: "{{lom_hostname}}"
+        command: "InstallIdracFirmware"
+        #debug: "True"
+        firmware: "{{ firmware[SystemGeneration].idrac }}"
+    
+    - name: "Install BIOS"
+      local_action:
+        module: idrac
+        username: "{{lom_user}}"
+        password: "{{lom_pass}}"
+        hostname: "{{lom_hostname}}"
+        command: "InstallBIOS"
+        #debug: "True"
+        firmware: "{{ firmware[SystemGeneration].bios }}"
 
     - name: "Install Firmware"
       local_action:
@@ -53,6 +66,8 @@
         command: "InstallFirmware"
         debug: "True"
         firmware: "{{ firmware[SystemGeneration] }}"
-      register: install_res
+      register: result
 
-    - debug: var=install_res
+    - debug: var=result.software_res
+
+    - debug: var=result.result

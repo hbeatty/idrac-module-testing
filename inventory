@@ -1,4 +1,7 @@
 
+[cms]
+cms.example.com
+
 [webservers]
 www1.example.com
 www2.example.com
@@ -35,7 +38,3 @@ mid04.example.com
 10.22.252.131
 10.22.252.132
 10.22.252.133
-
-[cms]
-172.30.204.37
-
